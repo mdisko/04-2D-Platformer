@@ -30,7 +30,6 @@ func _physics_process(_delta):
 	if direction > 0 and $AnimatedSprite.flip_h: $AnimatedSprite.flip_h = false
 	Backup.position = position
 
-		
 
 func is_moving():
 	if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
