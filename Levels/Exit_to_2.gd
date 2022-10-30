@@ -10,6 +10,4 @@ func _on_Exit_body_entered(body):
 		if name == "Exit3":
 			var _target = get_tree().change_scene("res://Levels/Level4.tscn")
 		if name == "Exit4":
-			var _target = get_tree().change_scene("res://Levels/Level5.tscn")
-		if name == "Exit5":
 			var _target = get_tree().change_scene("res://Levels/Game_Over.tscn")
