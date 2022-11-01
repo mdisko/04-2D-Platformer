@@ -29,7 +29,5 @@ func spawn(e_type, attr, p):
 		enemy = Bug.instance()
 	if e_type == "Goblin":
 		enemy = Goblin.instance()
-	for a in attr:
-		enemy[a] = attr[a]
 	enemy.position = p
 	add_child(enemy)

@@ -17,3 +17,7 @@ func physics_process(_delta):
 		SM.set_state("Moving")
 	if Input.is_action_pressed("up"):
 		SM.set_state("Jumping")
+	if Input.is_action_pressed("dash"):
+		SM.set_state("Dashing")
+	if Input.is_action_pressed("melee"):
+		SM.set_state("Melee")

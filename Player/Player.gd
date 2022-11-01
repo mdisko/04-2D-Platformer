@@ -21,6 +21,9 @@ export var max_leap = 1000
 
 var moving = false
 var is_jumping = false
+var animating = false
+
+var melee = 50
 
 
 
@@ -46,6 +49,7 @@ func _unhandled_input(event):
 		direction = 1
 
 func set_animation(anim):
+	animating = true
 	if $AnimatedSprite.animation == anim: return
 	if $AnimatedSprite.frames.has_animation(anim): $AnimatedSprite.play(anim)
 	else: $AnimatedSprite.play()
@@ -53,3 +57,7 @@ func set_animation(anim):
 func die():
 	Backup.current = true
 	queue_free()
+
+
+func _on_AnimatedSprite_animation_finished():
+	animating = false

@@ -24,10 +24,11 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("menu"):
-		var menu = get_node_or_null("/root/UI/Menu")
-		if menu != null:
-			var p = get_tree().paused
-			if p:
+		var menu = get_node_or_null("/root/Game/HUD/Pause_Menu")
+		if menu == null:
+			get_tree().quit()
+		else:
+			if menu.visible:
 				menu.hide()
 				get_tree().paused = false
 			else:
@@ -44,7 +45,7 @@ func decrease_lives(l):
 	lives -= l
 	health = max_health
 	if lives <= 0:
-		get_tree().change_scene("res://Levels/Game_Over.tscn")
+		get_tree().change_scene("res://Game/HUD/Game_Over.tscn")
 
 func get_save_data():
 	var data = {
@@ -79,7 +80,7 @@ func load_save_level(data):
 	call_deferred("load_save_data", data)
 
 func load_save_data(data):
-	var menu = get_node_or_null("/root/UI/Menu")
+	var menu = get_node_or_null("/root/Game/HUD/Pause_Menu")
 	if menu != null:
 		menu.show()
 	

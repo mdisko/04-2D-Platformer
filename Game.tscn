@@ -329,32 +329,32 @@ polygon = PoolVector2Array( 1229, 372, 1299, 372, 1299, 445, 1229, 445 )
 [node name="Camera" type="Camera2D" parent="."]
 current = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="HUD" type="Control" parent="CanvasLayer"]
+[node name="HUD" type="Control" parent="UI"]
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 10 )
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HUD"]
+[node name="ColorRect" type="ColorRect" parent="UI/HUD"]
 margin_right = 2048.0
 margin_bottom = 20.0
 color = Color( 0.317647, 0, 0, 0.341176 )
 
-[node name="Score" type="Label" parent="CanvasLayer/HUD"]
+[node name="Score" type="Label" parent="UI/HUD"]
 margin_left = 1024.0
 margin_right = 2048.0
 margin_bottom = 20.0
 text = "Score"
 valign = 1
 
-[node name="Lives" type="Label" parent="CanvasLayer/HUD"]
+[node name="Lives" type="Label" parent="UI/HUD"]
 margin_right = 512.0
 margin_bottom = 20.0
 text = "Lives"
 valign = 1
 
-[node name="Health" type="Label" parent="CanvasLayer/HUD"]
+[node name="Health" type="Label" parent="UI/HUD"]
 margin_left = 512.0
 margin_right = 1024.0
 margin_bottom = 20.0
