@@ -4,10 +4,14 @@ extends Area2D
 func _on_Exit_body_entered(body):
 	if body.name == "Player":
 		if name == "Exit":
-			var _target = get_tree().change_scene("res://Levels/Level2.tscn")
+			Global.level = 2
 		if name == "Exit2":
-			var _target = get_tree().change_scene("res://Levels/Level3.tscn")
+			Global.level = 3
 		if name == "Exit3":
-			var _target = get_tree().change_scene("res://Levels/Level4.tscn")
+			Global.level = 4
 		if name == "Exit4":
-			var _target = get_tree().change_scene("res://Levels/Game_Over.tscn")
+			Global.level = 5
+		if Global.level < Global.levels.size():
+			get_tree().change_scene(Global.levels[Global.level])
+		else:
+			get_tree().change_scene("res://Levels/Game_Over.tscn")

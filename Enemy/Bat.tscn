@@ -25,12 +25,11 @@ animations = [ {
 
 [sub_resource type="CircleShape2D" id=5]
 
-[node name="Bat" type="KinematicBody2D"]
+[node name="Bat" type="KinematicBody2D" groups=["Bat"]]
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

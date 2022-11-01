@@ -1,11 +1,12 @@
 extends KinematicBody2D
 
 onready var SM = $StateMachine
-onready var Backup = get_node("/root/Game/Player_Container/Backup_Camera")
+onready var Backup = get_node("/root/Game/Camera")
 
 var velocity = Vector2.ZERO
 var jump_power = Vector2.ZERO
 var direction = 1
+var health = 100
 
 export var gravity = Vector2(0,30)
 

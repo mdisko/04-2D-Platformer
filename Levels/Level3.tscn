@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Levels/Spawn.gd" type="Script" id=1]
 [ext_resource path="res://Player_Container/Player_Container.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Assets/cave3.png" type="Texture" id=10]
 [ext_resource path="res://Assets/lava.png" type="Texture" id=11]
 [ext_resource path="res://Enemy/Enemy_Container.gd" type="Script" id=12]
+[ext_resource path="res://HUD/HUD.gd" type="Script" id=13]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
@@ -198,9 +199,6 @@ navpoly = SubResource( 10 )
 [node name="Player_Container" type="Node2D" parent="."]
 script = ExtResource( 2 )
 
-[node name="Backup_Camera" type="Camera2D" parent="Player_Container"]
-current = true
-
 [node name="Spawn" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Spawn"]
@@ -223,5 +221,39 @@ polygon = PoolVector2Array( 1229, 372, 1299, 372, 1299, 445, 1229, 445 )
 
 [node name="Enemy_Container" type="Node2D" parent="."]
 script = ExtResource( 12 )
+
+[node name="Camera" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 13 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HUD"]
+margin_right = 1024.0
+margin_bottom = 20.0
+color = Color( 0.317647, 0, 0, 0.341176 )
+
+[node name="Score" type="Label" parent="CanvasLayer/HUD"]
+margin_left = 512.0
+margin_right = 1024.0
+margin_bottom = 20.0
+text = "Score"
+valign = 1
+
+[node name="Lives" type="Label" parent="CanvasLayer/HUD"]
+margin_right = 512.0
+margin_bottom = 20.0
+text = "Lives"
+valign = 1
+
+[node name="Health" type="Label" parent="CanvasLayer/HUD"]
+margin_left = 512.0
+margin_right = 1024.0
+margin_bottom = 20.0
+text = "Health"
+valign = 1
 
 [connection signal="body_entered" from="Exit3" to="Exit3" method="_on_Exit_body_entered"]
