@@ -3,20 +3,24 @@ extends Node
 onready var SM = get_parent()
 onready var player = get_node("../..")
 
+var reset_collision = 0
+
 func _ready():
 	yield(player, "ready")
 
 func start():
 	player.set_animation("Dashing")
+	reset_collision = player.collision_layer
+	player.collision_layer = 1
+	player.collision_mask = 1
+	$Timer.start()
 
 func physics_process(_delta):
-	if not player.animating:
-		SM.set_state("Idle")
-	if not player.is_on_floor():
-		SM.set_state("Falling")
-	if Input.is_action_just_released("dash"):
-		SM.set_state("Moving")
-	if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
-		var input_vector = Vector2(Input.get_action_strength("right") - Input.get_action_strength("left"),0)
-		player.velocity += player.move_speed * input_vector
-		player.move_and_slide(player.velocity, Vector2.UP)
+	player.velocity.x = player.direction*player.dashing
+	player.move_and_slide(player.velocity, Vector2.UP)
+
+
+func _on_Timer_timeout():
+	player.collision_layer = reset_collision
+	player.collision_mask = reset_collision
+	SM.set_state("Idle")

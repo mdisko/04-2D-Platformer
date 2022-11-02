@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Levels/Spawn.gd" type="Script" id=1]
 [ext_resource path="res://Player_Container/Player_Container.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Assets/lava.png" type="Texture" id=11]
 [ext_resource path="res://Enemy/Enemy_Container.gd" type="Script" id=12]
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=13]
+[ext_resource path="res://HUD/Pause_Menu.tscn" type="PackedScene" id=14]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
@@ -224,36 +225,39 @@ script = ExtResource( 12 )
 
 [node name="Camera" type="Camera2D" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="HUD" type="Control" parent="CanvasLayer"]
+[node name="HUD" type="Control" parent="UI"]
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 13 )
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HUD"]
+[node name="ColorRect" type="ColorRect" parent="UI/HUD"]
 margin_right = 1024.0
 margin_bottom = 20.0
 color = Color( 0.317647, 0, 0, 0.341176 )
 
-[node name="Score" type="Label" parent="CanvasLayer/HUD"]
+[node name="Score" type="Label" parent="UI/HUD"]
 margin_left = 512.0
 margin_right = 1024.0
 margin_bottom = 20.0
 text = "Score"
 valign = 1
 
-[node name="Lives" type="Label" parent="CanvasLayer/HUD"]
+[node name="Lives" type="Label" parent="UI/HUD"]
 margin_right = 512.0
 margin_bottom = 20.0
 text = "Lives"
 valign = 1
 
-[node name="Health" type="Label" parent="CanvasLayer/HUD"]
+[node name="Health" type="Label" parent="UI/HUD"]
 margin_left = 512.0
 margin_right = 1024.0
 margin_bottom = 20.0
 text = "Health"
 valign = 1
+
+[node name="Pause_Menu" parent="UI" instance=ExtResource( 14 )]
+visible = false
 
 [connection signal="body_entered" from="Exit3" to="Exit3" method="_on_Exit_body_entered"]

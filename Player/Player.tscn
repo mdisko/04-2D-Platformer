@@ -169,6 +169,8 @@ animations = [ {
 extents = Vector2( 7.85714, 17.8571 )
 
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -204,6 +206,10 @@ script = ExtResource( 11 )
 [node name="Dashing" type="Node" parent="StateMachine"]
 script = ExtResource( 12 )
 
+[node name="Timer" type="Timer" parent="StateMachine/Dashing"]
+wait_time = 0.25
+one_shot = true
+
 [node name="Melee" type="Node" parent="StateMachine"]
 script = ExtResource( 13 )
 
@@ -214,3 +220,4 @@ script = ExtResource( 15 )
 current = true
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="timeout" from="StateMachine/Dashing/Timer" to="StateMachine/Dashing" method="_on_Timer_timeout"]

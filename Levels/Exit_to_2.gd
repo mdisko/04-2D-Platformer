@@ -11,7 +11,7 @@ func _on_Exit_body_entered(body):
 			Global.level = 4
 		if name == "Exit4":
 			Global.level = 5
-		if Global.level < Global.levels.size():
-			get_tree().change_scene(Global.levels[Global.level])
+		if Global.level <= Global.levels.size():
+			get_tree().change_scene(Global.levels[Global.level-1])
 		else:
 			get_tree().change_scene("res://Levels/Game_Over.tscn")

@@ -26,7 +26,17 @@ func _physics_process(_delta):
 func _on_Area2D_body_entered(body):
 	if velocity.x != 0 and (body.name == "TileMap"):
 		velocity.x = 0
-		direction *= -1
+		direction = 1
 	if body.name == 'Player':
 		body.die()
 		queue_free()
+
+
+func _on_Area2D2_body_entered(body):
+	if velocity.x != 0 and (body.name == "TileMap"):
+		velocity.x = 0
+		direction = -1
+	if body.name == 'Player':
+		body.die()
+		queue_free()
+

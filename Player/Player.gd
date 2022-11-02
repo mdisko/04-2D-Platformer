@@ -7,6 +7,7 @@ var velocity = Vector2.ZERO
 var jump_power = Vector2.ZERO
 var direction = 1
 var health = 100
+var dashing = 300
 
 export var gravity = Vector2(0,30)
 

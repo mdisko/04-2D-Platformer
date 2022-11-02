@@ -24,7 +24,7 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("menu"):
-		var menu = get_node_or_null("/root/Game/HUD/Pause_Menu")
+		var menu = get_node_or_null("/root/Game/UI/Pause_Menu")
 		if menu == null:
 			get_tree().quit()
 		else:
@@ -60,14 +60,15 @@ func get_save_data():
 	var player = get_node_or_null("/root/Game/Player_Container/Player")
 	if player != null:
 		data["player"] = var2str(player.position)
-	var enemies = get_node("root/Game/Enemy_Container")
-	for e in enemies:
-		if e.is_in_group("Goblin"):
-			var temp = {"position":var2str(e.position), "max_constraint":e.max_constaint, "min_constraint":e.min_constraint}
-			data["goblin"].append(temp)
-		if e.is_in_group("Bat"):
-			var temp = {"position":var2str(e.position)}
-			data["bat"].append(temp)
+	var enemies = get_node_or_null("root/Game/Enemy_Container")
+	if enemies != null:
+		for e in enemies:
+			if e.is_in_group("Goblin"):
+				var temp = {"position":var2str(e.position), "max_constraint":e.max_constaint, "min_constraint":e.min_constraint}
+				data["goblin"].append(temp)
+			if e.is_in_group("Bat"):
+				var temp = {"position":var2str(e.position)}
+				data["bat"].append(temp)
 	return data
 
 func load_save_level(data):
@@ -90,18 +91,19 @@ func load_save_data(data):
 			player.name = "Player2"
 			player.queue_free()
 		get_node("/root/Game/Player_Container").spawn(str2var(data["player"]))
-	var enemy_container = get_node("/root/Game/Enemy_Container")
-	for e in enemy_container.get_children():
-		e.queue_free()
-	for e in data["goblin"]:
-		var attr = {"max_constraint":e["max_constaint"], "min_constraint":e["min_constaint"]}
-		enemy_container.spawn("Goblin", attr, str2var(e["position"]))
-	for e in data["bug"]:
-		var attr = {"max_constraint":e["max_constaint"], "min_constraint":e["min_constaint"]}
-		enemy_container.spawn("Bug", attr, str2var(e["position"]))
-	for e in data["bat"]:
-		var attr = {}
-		enemy_container.spawn("Bat", attr, str2var(e["position"]))
+	var enemy_container = get_node_or_null("/root/Game/Enemy_Container")
+	if enemy_container != null:
+		for e in enemy_container.get_children():
+			e.queue_free()
+		for e in data["goblin"]:
+			var attr = {"max_constraint":e["max_constaint"], "min_constraint":e["min_constaint"]}
+			enemy_container.spawn("Goblin", attr, str2var(e["position"]))
+		for e in data["bug"]:
+			var attr = {"max_constraint":e["max_constaint"], "min_constraint":e["min_constaint"]}
+			enemy_container.spawn("Bug", attr, str2var(e["position"]))
+		for e in data["bat"]:
+			var attr = {}
+			enemy_container.spawn("Bat", attr, str2var(e["position"]))
 
 func save_game(which_file):
 	var file = File.new()
