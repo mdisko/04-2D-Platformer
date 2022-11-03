@@ -8,6 +8,7 @@ var jump_power = Vector2.ZERO
 var direction = 1
 var health = 100
 var dashing = 300
+var lives = 5
 
 export var gravity = Vector2(0,30)
 
@@ -24,7 +25,7 @@ var moving = false
 var is_jumping = false
 var animating = false
 
-var melee = 50
+export var melee = 50
 
 
 
@@ -56,6 +57,7 @@ func set_animation(anim):
 	else: $AnimatedSprite.play()
 
 func die():
+	Global.decrease_lives(lives)
 	Backup.current = true
 	queue_free()
 

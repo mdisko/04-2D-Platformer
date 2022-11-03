@@ -1,12 +1,13 @@
 extends KinematicBody2D
 
 var player = null
-export var speed = 10
+export var speed = 1
 export var damage = 10
 var direction = 1
+var health = 20
 var velocity = Vector2.ZERO
 
-var points = []
+var points = [50]
 const margin = 1.5
 
 func _ready():

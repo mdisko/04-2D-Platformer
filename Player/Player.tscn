@@ -184,6 +184,13 @@ position = Vector2( -1.5, 0.5 )
 scale = Vector2( 0.7, 0.7 )
 shape = SubResource( 18 )
 
+[node name="Melee" type="Node2D" parent="."]
+
+[node name="Attack" type="RayCast2D" parent="Melee"]
+enabled = true
+cast_to = Vector2( 17, 0 )
+collision_mask = 2
+
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 4 )
 
