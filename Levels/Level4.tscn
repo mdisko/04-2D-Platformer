@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Levels/Spawn.gd" type="Script" id=1]
 [ext_resource path="res://Player_Container/Player_Container.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Assets/cave2.png" type="Texture" id=10]
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=11]
 [ext_resource path="res://HUD/Pause_Menu.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Assets/bkg3.mp3" type="AudioStream" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
@@ -219,5 +220,11 @@ valign = 1
 
 [node name="Pause_Menu" parent="UI" instance=ExtResource( 12 )]
 visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -11.143
+pitch_scale = 0.5
+autoplay = true
 
 [connection signal="body_entered" from="Exit4" to="Exit4" method="_on_Exit_body_entered"]

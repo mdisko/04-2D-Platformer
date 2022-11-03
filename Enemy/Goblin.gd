@@ -7,8 +7,11 @@ var direction = 1
 var health = 10
 var max_health = 10
 var velocity = Vector2.ZERO
+var score = 100
 
-var points = [100]
+onready var Goblin = load("res://Enemy/Goblin.tscn")
+
+var points = []
 const margin = 1.5
 
 func _ready():

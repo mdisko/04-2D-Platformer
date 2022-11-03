@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Levels/Spawn.gd" type="Script" id=1]
 [ext_resource path="res://Player_Container/Player_Container.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Enemy/Goblin_Container.gd" type="Script" id=18]
 [ext_resource path="res://HUD/HUD.gd" type="Script" id=19]
 [ext_resource path="res://HUD/Pause_Menu.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Assets/Bkgd1.mp3" type="AudioStream" id=21]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
@@ -509,5 +510,30 @@ valign = 1
 
 [node name="Pause_Menu" parent="UI" instance=ExtResource( 20 )]
 visible = false
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+margin_top = 385.0
+margin_right = 405.0
+margin_bottom = 425.0
+color = Color( 0, 0, 0, 0.376471 )
+
+[node name="Label" type="Label" parent="Control"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 360.0
+margin_right = 364.0
+margin_bottom = 374.0
+text = "Press J key to Attack Enemies and Space to Dash through them!"
+valign = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+volume_db = -21.048
+autoplay = true
 
 [connection signal="body_entered" from="Exit2" to="Exit2" method="_on_Exit_body_entered"]

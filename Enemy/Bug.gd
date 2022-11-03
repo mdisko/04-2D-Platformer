@@ -6,12 +6,13 @@ export var damage = 10
 var direction = 1
 var health = 20
 var velocity = Vector2.ZERO
+var score = 50
 
-var points = [50]
+var points = []
 const margin = 1.5
 
 func _ready():
-	position = Vector2(500,565)
+	position = Vector2(1000,1620)
 
 func _physics_process(_delta):
 	if direction < 0 and !$AnimatedSprite.flip_h:

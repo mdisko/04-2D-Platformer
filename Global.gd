@@ -45,7 +45,7 @@ func decrease_lives(l):
 	lives -= l
 	health = max_health
 	if lives <= 0:
-		get_tree().change_scene("res://Game/HUD/Game_Over.tscn")
+		get_tree().change_scene("res://HUD/Game_Over.tscn")
 
 func get_save_data():
 	var data = {
@@ -90,7 +90,7 @@ func load_save_data(data):
 		if player != null:
 			player.name = "Player2"
 			player.queue_free()
-		get_node("/root/Game/Player_Container").spawn(str2var(data["player"]))
+		get_node_or_null("/root/Game/Player_Container/Player").spawn(str2var(data["player"]))
 	var enemy_container = get_node_or_null("/root/Game/Enemy_Container")
 	if enemy_container != null:
 		for e in enemy_container.get_children():

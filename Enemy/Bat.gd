@@ -6,11 +6,12 @@ export var speed = 350
 export var looking_speed = 25
 var line_of_sight = false
 var health = 30
+var score = 50
 
 export var looking_color = Color(0.455,0.753,0.988,0.25)
 export var los_color = Color(0.988,0.753,0.455,0.5)
 
-var points = [50]
+var points = []
 const margin = 1.5
 
 func _ready():
